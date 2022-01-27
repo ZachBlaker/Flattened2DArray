@@ -7,6 +7,17 @@ public enum DirectionType
     InterCardinal,
     All
 }
+public enum DirectionEnum
+{
+    Up,
+    UpRight,
+    Right,
+    DownRight,
+    Down,
+    DownLeft,
+    Left,
+    UpLeft
+}
 
 public static class Directions
 {   
@@ -47,24 +58,7 @@ public static class Directions
     };
 
 
-    private static readonly string[] directionNames = new string[]
-    {
-        "Up",
-        "UpRight",
-        "Right",
-        "DownRight",
-        "Down",
-        "DownLeft",
-        "Left",
-        "UpLeft"
-    };
-
-    public static string GetName(this Vector2Int direction)
-    {
-        int index = Array.IndexOf(allDirections, direction);
-        return directionNames[index];
-    }
-
+    //Returns an array of Vector2Int positions that are adjacent to position in the given DirectionType
     public static Vector2Int[] GetAdjacentPositions(Vector2Int position, DirectionType directionType)
     {
         Vector2Int[] directions = directionType.GetDirectionArray();
@@ -75,6 +69,7 @@ public static class Directions
         return adjacentPositions;
     }
 
+    //Returns the Vector2Int array for that DirectionType
     public static Vector2Int[] GetDirectionArray(this DirectionType directionType)
     {
         switch (directionType)
@@ -89,13 +84,9 @@ public static class Directions
                 throw new Exception();
         }
     }
-    public static bool IsValidDirection(Vector2Int direction)
+
+    public static Vector2Int ToVector2Int(this DirectionEnum directionEnum)
     {
-        foreach(Vector2Int dir in allDirections)
-        {
-            if (dir == direction)
-                return true;
-        }
-        return false;
+        return allDirections[(int)directionEnum];
     }
 }
