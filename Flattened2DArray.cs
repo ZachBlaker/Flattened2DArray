@@ -152,7 +152,7 @@ public class Flattened2DArray<T> : IEnumerable
         return validPositions;
     }
     public virtual List<Vector2Int> GetValidAdjacentPositions(int x, int y, DirectionType directionType = DirectionType.Cardinal)
-            => GetValidAdjacentPositions(new Vector2Int(x, y), directionType);
+        => GetValidAdjacentPositions(new Vector2Int(x, y), directionType);
     public virtual List<Vector2Int> GetValidAdjacentPositions(int index, DirectionType directionType = DirectionType.Cardinal)
         => GetValidAdjacentPositions(FromIndex(index), directionType);
 
