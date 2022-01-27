@@ -209,10 +209,6 @@ public class Flattened2DArray<T> : IEnumerable
         texture.Apply();
         return texture;
     }
-    public void DrawSprite(T positiveValue, string name)
-    {
-        CustomDebug.TextureDrawing.CreateSpriteRenderer(name, ToTexture2D(positiveValue));
-    }
 
 
 
