@@ -116,7 +116,6 @@ public class Flattened2DArray<T> : IEnumerable
         return contents[x * _height + y];
 #endif
     }
-    }
     public virtual T Get(Vector2Int position)
         => Get(position.x, position.y);
 
