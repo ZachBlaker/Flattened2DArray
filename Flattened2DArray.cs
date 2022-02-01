@@ -64,19 +64,19 @@ public class Flattened2DArray<T> : IEnumerable
     //Convert x,y position into index value
     [MethodImpl(MethodImplOptions.AggressiveInlining)] public int ToIndex(int x, int y)
     {
-        return x * _width + y;
+        return x * _height + y;
     }
     //Convert Vector2Int position into index value
     [MethodImpl(MethodImplOptions.AggressiveInlining)] public int ToIndex(Vector2Int position)
     {
-        return position.x * _width + position.y;
+        return position.x * _height + position.y;
     }
     //Convert index into Vector2int position
     [MethodImpl(MethodImplOptions.AggressiveInlining)] public Vector2Int FromIndex(int index)
     {
         return new Vector2Int(
-            index / _width, 
-            index % _width);
+            index / _height, 
+            index % _height);
     }
 
 
@@ -86,14 +86,14 @@ public class Flattened2DArray<T> : IEnumerable
 #if validate
         try
         {
-            contents[x * _width + y] = value;
+            contents[x * _height + y] = value;
         }
         catch (Exception e)
         {
             throw new Exception(e.Message + $" At position {x},{y}");
         }
 #else
-        contents[x * _width + y] = value;
+        contents[x * _height + y] = value;
 #endif
     }
     public virtual void Set(Vector2Int position, T value)
@@ -106,15 +106,16 @@ public class Flattened2DArray<T> : IEnumerable
 #if validate
         try
         {
-            return contents[x * _width + y];
+            return contents[x * _height + y];
         }
         catch(Exception e)
         {
             throw new Exception(e.Message + $" At position {x},{y}");
         }
 #else
-        return contents[x * _width + y];
+        return contents[x * _height + y];
 #endif
+    }
     }
     public virtual T Get(Vector2Int position)
         => Get(position.x, position.y);
